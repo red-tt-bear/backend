@@ -125,6 +125,7 @@ class CourseController {
                 as: 'enrolledStudents',
             });
             where[`$enrolledStudents.${StudentEnrollment.rawAttributes.userId.field}$`] = options.filter.enrolledUserId;
+            where[`$enrolledStudents.${StudentEnrollment.rawAttributes.dropDate.field}$`] = null;
         }
 
         return Course.findAll({
