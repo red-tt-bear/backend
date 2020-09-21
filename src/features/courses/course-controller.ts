@@ -125,6 +125,7 @@ class CourseController {
                 as: 'enrolledStudents',
             });
             where[`$enrolledStudents.${StudentEnrollment.rawAttributes.userId.field}$`] = options.filter.enrolledUserId;
+            where[`$enrolledStudents.${StudentEnrollment.rawAttributes.active.field}$`] = true;
             where[`$enrolledStudents.${StudentEnrollment.rawAttributes.dropDate.field}$`] = null;
         }
 
@@ -1268,7 +1269,8 @@ class CourseController {
                     courseId: {
                         [Sequelize.Op.eq]: sequelize.literal(`"user->courseEnrollments".${Course.rawAttributes.id.field}`)
                     },
-                    dropDate: null
+                    dropDate: null,
+                    active: true
                 }
             }];
 
