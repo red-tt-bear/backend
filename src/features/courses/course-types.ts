@@ -8,6 +8,8 @@ import CourseUnitContent from '../../database/models/course-unit-content';
 import CourseTopicContent from '../../database/models/course-topic-content';
 import Role from '../permissions/roles';
 import { OutputFormat } from '../../utilities/renderer-helper';
+import { Moment } from 'moment';
+import { GetGradingPolicyResult } from '../../utilities/grading-helper';
 
 export interface EnrollByCodeOptions {
     code: string;
@@ -108,6 +110,7 @@ export interface UpdateGradeOptions {
         id: number;
     };
     updates: Partial<StudentGrade>;
+    initiatingUserId: number;
 }
 
 export interface UpdateQuestionsOptions {
@@ -266,4 +269,38 @@ export interface GetCalculatedRendererParamsResponse {
     outputformat: OutputFormat;
     permissionLevel: number;
     showSolutions: number;
+}
+
+export interface GetGradeOptions {
+    studentGrade: StudentGrade;
+    topic: CourseTopicContent;
+    question: CourseWWTopicQuestion;
+
+    solutionDate: moment.Moment;
+
+    newScore: number;
+}
+
+export interface GetGradeResult {
+    gradingPolicy: GetGradingPolicyResult;
+    gradeUpdates: Partial<StudentGrade>;
+    score: number;
+}
+
+export interface GradeOptions {
+    studentGrade: StudentGrade;
+    topic: CourseTopicContent;
+    question: CourseWWTopicQuestion;
+
+    solutionDate: moment.Moment;
+
+    newScore: number;
+
+    submitted: unknown;
+}
+
+export interface GradeResult {
+    gradingPolicy: GetGradingPolicyResult;
+    gradeUpdates: Partial<StudentGrade>;
+    score: number;
 }
