@@ -38,6 +38,7 @@ jobs:
         run: npm prune --production
       - name: Package project
         run: |
+          set -e;
           mkdir build;
           mv ts-built build;
           mv package*.json build;
