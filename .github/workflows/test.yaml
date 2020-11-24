@@ -30,3 +30,6 @@ jobs:
     #   run: npm test
     #   env:
     #     CI: true
+    - name: Check Build
+      run: npm prune --production
+      run: npm run run:built:test-run # this script runs the application without connecting the server or database, therefore it goes through all the imports and everything
