@@ -20,8 +20,8 @@ jobs:
     steps:
       # - name: Checkout code
       #   uses: actions/checkout@v1
+      - uses: actions/checkout@v1
       - name: npm install
-        uses: actions/checkout@v1
         run: npm install
       - name: Get the file name
         id: get_file_name
