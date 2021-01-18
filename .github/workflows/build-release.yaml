@@ -18,13 +18,11 @@ jobs:
     container:
       image: 'node:14.15.3-alpine'
     steps:
-      # - uses: actions/checkout@v1
-      # - name: npm install
-      #   run: npm install
-      - name: Install tar
-        run: apk add tar
       - name: Install git
         run: apk add git
+      - uses: actions/checkout@v1
+      - name: npm install
+        run: npm install
       - name: NPM install
         uses: bahmutov/npm-install@v1
       - name: Get the file name
