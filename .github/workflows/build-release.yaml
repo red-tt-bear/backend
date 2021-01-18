@@ -18,11 +18,15 @@ jobs:
     container:
       image: 'node:14.15.3-alpine'
     steps:
-      # - name: Checkout code
-      #   uses: actions/checkout@v1
-      - uses: actions/checkout@v1
-      - name: npm install
-        run: npm install
+      # - uses: actions/checkout@v1
+      # - name: npm install
+      #   run: npm install
+      - name: Install tar
+        run: apk add tar
+      - name: Install git
+        run: apk add git
+      - name: NPM install
+        uses: bahmutov/npm-install@v1
       - name: Get the file name
         id: get_file_name
         run: echo ::set-output name=result::rederly-$(git describe)-backend
