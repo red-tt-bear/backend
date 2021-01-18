@@ -26,8 +26,6 @@ jobs:
       - name: Get the file name
         id: get_file_name
         run: echo ::set-output name=result::rederly-$(git describe)-backend
-      - name: NPM install
-        uses: bahmutov/npm-install@v1
       - name: Build and package
         run: npm run build:package
         env:
